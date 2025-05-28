@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (token) {
     try {
-      const userResponse = await axios.get(`/api/me`, {
+      const userResponse = await axios.get(`/api/auth/users/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       user = userResponse.data;

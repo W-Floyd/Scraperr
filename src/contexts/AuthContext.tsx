@@ -24,7 +24,7 @@ export const AuthProvider: React.FC<AuthProps> = ({ children }) => {
     const token = Cookies.get("token");
     if (token) {
       axios
-        .get(`/api/me`, {
+        .get(`/api/auth/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<AuthProps> = ({ children }) => {
       sameSite: "Lax",
     });
 
-    const userResponse = await axios.get(`/api/me`, {
+    const userResponse = await axios.get(`/api/auth/users/me`, {
       headers: { Authorization: `Bearer ${response.data.access_token}` },
     });
 
